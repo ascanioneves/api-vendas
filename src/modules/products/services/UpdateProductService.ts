@@ -4,7 +4,7 @@ import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 import AppError from '@shared/errors/AppError';
 
 interface IRequest {
-  id: number;
+  id: string;
   name: string;
   price: number;
   quantity: number;
