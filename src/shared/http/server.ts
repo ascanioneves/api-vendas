@@ -4,6 +4,7 @@ import 'express-async-errors';
 import cors from 'cors';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
+import { errors } from 'celebrate';
 import '@shared/typeorm';
 
 const app = express();
@@ -12,6 +13,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use(routes);
+
+// se for gerado erro na validação do celebrate, vai ser trazido para cá
+app.use(errors());
 
 //Middleware que captura o erro e verifica se o erro é uma instancia da classe App Error
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
