@@ -5,7 +5,7 @@ import Product from '../entities/Product';
 export class ProductRepository extends Repository<Product> {
   public async findByName(name: string): Promise<Product | undefined> {
     // retorna o primeiro elemento que corresponde ao nome
-    const product = this.findOne({
+    const product = await this.findOne({
       where: {
         name,
       },
